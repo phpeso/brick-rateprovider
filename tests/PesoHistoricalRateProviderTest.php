@@ -31,16 +31,16 @@ final class PesoHistoricalRateProviderTest extends TestCase
                 ],
             ],
         ]);
-        $exchange = new PesoHistoricalRateProvider($service, Calendar::parse('2025-06-13'));
-        $converter = new CurrencyConverter($exchange);
+        $rateProvider = new PesoHistoricalRateProvider($service, Calendar::parse('2025-06-13'));
+        $converter = new CurrencyConverter($rateProvider);
 
         $usd100 = Money::of(100.00, 'USD');
 
         $eur = $converter->convert($usd100, 'EUR', roundingMode: RoundingMode::HALF_EVEN);
         self::assertEquals('EUR 91.23', (string)$eur);
 
-        $exchange = $exchange->withDate(Calendar::parse('2025-06-19'));
-        $converter = new CurrencyConverter($exchange);
+        $rateProvider = $rateProvider->withDate(Calendar::parse('2025-06-19'));
+        $converter = new CurrencyConverter($rateProvider);
 
         $eur = $converter->convert($usd100, 'EUR', roundingMode: RoundingMode::HALF_EVEN);
         self::assertEquals('EUR 94.32', (string)$eur);
@@ -60,8 +60,8 @@ final class PesoHistoricalRateProviderTest extends TestCase
                 ],
             ],
         ]);
-        $exchange = new PesoHistoricalRateProvider($service, Calendar::parse('2025-06-14'));
-        $converter = new CurrencyConverter($exchange);
+        $rateProvider = new PesoHistoricalRateProvider($service, Calendar::parse('2025-06-14'));
+        $converter = new CurrencyConverter($rateProvider);
 
         $usd100 = Money::of(100.00, 'USD');
 
@@ -75,8 +75,8 @@ final class PesoHistoricalRateProviderTest extends TestCase
 
     public function testExchangeSame(): void
     {
-        $exchange = new PesoHistoricalRateProvider(new NullService(), Date::today());
-        $converter = new CurrencyConverter($exchange);
+        $rateProvider = new PesoHistoricalRateProvider(new NullService(), Date::today());
+        $converter = new CurrencyConverter($rateProvider);
 
         $eur100 = Money::of(100.00, 'EUR');
         $converted = $converter->convert($eur100, 'EUR');

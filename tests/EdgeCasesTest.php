@@ -32,8 +32,8 @@ final class EdgeCasesTest extends TestCase
             }
         };
 
-        $exchange = new PesoRateProvider($service);
-        $converter = new CurrencyConverter($exchange);
+        $rateProvider = new PesoRateProvider($service);
+        $converter = new CurrencyConverter($rateProvider);
 
         $this->expectException(Error::class);
         $this->expectExceptionMessage(

@@ -22,8 +22,8 @@ final class PesoRateProviderTest extends TestCase
                 'EUR' => '0.91234',
             ],
         ]);
-        $exchange = new PesoRateProvider($service);
-        $converter = new CurrencyConverter($exchange);
+        $rateProvider = new PesoRateProvider($service);
+        $converter = new CurrencyConverter($rateProvider);
 
         $usd100 = Money::of(100.00, 'USD');
 
@@ -39,8 +39,8 @@ final class PesoRateProviderTest extends TestCase
                 'EUR' => '0.91234',
             ],
         ]);
-        $exchange = new PesoRateProvider($service);
-        $converter = new CurrencyConverter($exchange);
+        $rateProvider = new PesoRateProvider($service);
+        $converter = new CurrencyConverter($rateProvider);
 
         $eur100 = Money::of(100.00, 'EUR');
 
@@ -54,8 +54,8 @@ final class PesoRateProviderTest extends TestCase
 
     public function testExchangeSame(): void
     {
-        $exchange = new PesoRateProvider(new NullService());
-        $converter = new CurrencyConverter($exchange);
+        $rateProvider = new PesoRateProvider(new NullService());
+        $converter = new CurrencyConverter($rateProvider);
 
         $eur100 = Money::of(100.00, 'EUR');
         $converted = $converter->convert($eur100, 'EUR');
