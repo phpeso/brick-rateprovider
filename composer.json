@@ -1,0 +1,30 @@
+{
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Peso\\Brick\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Peso\\Brick\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "brick/money": ">= 0.10 < 0.11",
+        "peso/core": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "psy/psysh": "*",
+        "sandfox.dev/code-standard": "^1.2025.06.29",
+        "squizlabs/php_codesniffer": "*",
+        "vimeo/psalm": "^6.13"
+    }
+}
