@@ -1,7 +1,7 @@
 {
     "name": "peso/brick-rateprovider",
     "type": "library",
-    "description": "Peso-based RateProvider class for brick/money",
+    "description": "Peso-based RateProvider class for Brick\\Money",
     "keywords": ["currency", "exchange", "conversion", "phpeso", "peso", "brick-money"],
     "homepage": "https://phpeso.readthedocs.io/",
     "license": "MIT",
