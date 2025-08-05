@@ -38,6 +38,7 @@ abstract readonly class AbstractRateProvider implements ExchangeRateProvider
                 $sourceCurrencyCode,
                 $targetCurrencyCode,
                 $response->exception->getMessage(),
+                $response->exception,
             );
         }
 
