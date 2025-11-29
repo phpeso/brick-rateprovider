@@ -12,8 +12,8 @@
         "email": "sandfox+phpeso@sandfox.me"
     }],
     "support": {
-        "issues": "https://github.com/phpeso/moneyphp-exchange/issues",
-        "source": "https://github.com/phpeso/moneyphp-exchange",
+        "issues": "https://github.com/phpeso/brick-rateprovider/issues",
+        "source": "https://github.com/phpeso/brick-rateprovider",
         "docs": "https://phpeso.readthedocs.io/"
     },
     "config": {
