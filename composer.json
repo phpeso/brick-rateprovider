@@ -34,10 +34,11 @@
     },
     "require": {
         "php": "^8.2",
-        "brick/money": ">= 0.10.2 < 0.11",
+        "brick/money": ">=0.10.2 <0.13",
         "peso/core": "^1.1"
     },
     "require-dev": {
+        "brick/math": ">=0.14 <0.18",
         "phpunit/phpunit": "^11.5",
         "psy/psysh": "*",
         "sandfox.dev/code-standard": "^1.2025.09.17",

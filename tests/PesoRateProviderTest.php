@@ -30,9 +30,9 @@ final class PesoRateProviderTest extends TestCase
         $rateProvider = new PesoRateProvider($service);
         $converter = new CurrencyConverter($rateProvider);
 
-        $usd100 = Money::of(100.00, 'USD');
+        $usd100 = Money::of('100.00', 'USD');
 
-        $eur = $converter->convert($usd100, 'EUR', roundingMode: RoundingMode::HALF_EVEN);
+        $eur = $converter->convert($usd100, 'EUR', roundingMode: RoundingMode::HalfEven);
 
         self::assertEquals('EUR 91.23', (string)$eur);
     }
@@ -47,7 +47,7 @@ final class PesoRateProviderTest extends TestCase
         $rateProvider = new PesoRateProvider($service);
         $converter = new CurrencyConverter($rateProvider);
 
-        $eur100 = Money::of(100.00, 'EUR');
+        $eur100 = Money::of('100.00', 'EUR');
 
         self::expectException(CurrencyConversionException::class);
         self::expectExceptionMessage(
@@ -62,7 +62,7 @@ final class PesoRateProviderTest extends TestCase
         $rateProvider = new PesoRateProvider(new NullService());
         $converter = new CurrencyConverter($rateProvider);
 
-        $eur100 = Money::of(100.00, 'EUR');
+        $eur100 = Money::of('100.00', 'EUR');
         $converted = $converter->convert($eur100, 'EUR');
 
         self::assertEquals($eur100, $converted);

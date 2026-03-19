@@ -39,15 +39,15 @@ final class PesoHistoricalRateProviderTest extends TestCase
         $rateProvider = new PesoHistoricalRateProvider($service, Calendar::parse('2025-06-13'));
         $converter = new CurrencyConverter($rateProvider);
 
-        $usd100 = Money::of(100.00, 'USD');
+        $usd100 = Money::of('100.00', 'USD');
 
-        $eur = $converter->convert($usd100, 'EUR', roundingMode: RoundingMode::HALF_EVEN);
+        $eur = $converter->convert($usd100, 'EUR', roundingMode: RoundingMode::HalfEven);
         self::assertEquals('EUR 91.23', (string)$eur);
 
         $rateProvider = $rateProvider->withDate(Calendar::parse('2025-06-19'));
         $converter = new CurrencyConverter($rateProvider);
 
-        $eur = $converter->convert($usd100, 'EUR', roundingMode: RoundingMode::HALF_EVEN);
+        $eur = $converter->convert($usd100, 'EUR', roundingMode: RoundingMode::HalfEven);
         self::assertEquals('EUR 94.32', (string)$eur);
     }
 
@@ -68,7 +68,7 @@ final class PesoHistoricalRateProviderTest extends TestCase
         $rateProvider = new PesoHistoricalRateProvider($service, Calendar::parse('2025-06-14'));
         $converter = new CurrencyConverter($rateProvider);
 
-        $usd100 = Money::of(100.00, 'USD');
+        $usd100 = Money::of('100.00', 'USD');
 
         self::expectException(CurrencyConversionException::class);
         self::expectExceptionMessage(
@@ -83,7 +83,7 @@ final class PesoHistoricalRateProviderTest extends TestCase
         $rateProvider = new PesoHistoricalRateProvider(new NullService(), Date::today());
         $converter = new CurrencyConverter($rateProvider);
 
-        $eur100 = Money::of(100.00, 'EUR');
+        $eur100 = Money::of('100.00', 'EUR');
         $converted = $converter->convert($eur100, 'EUR');
 
         self::assertEquals($eur100, $converted);
