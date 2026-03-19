@@ -41,7 +41,6 @@
         "phpunit/phpunit": "^11.5",
         "psy/psysh": "*",
         "sandfox.dev/code-standard": "^1.2025.09.17",
-        "squizlabs/php_codesniffer": "*",
-        "vimeo/psalm": "^6.13"
+        "squizlabs/php_codesniffer": "*"
     }
 }
