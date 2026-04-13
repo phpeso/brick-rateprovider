@@ -34,7 +34,7 @@
     },
     "require": {
         "php": "^8.2",
-        "brick/money": ">=0.10.2 <0.13",
+        "brick/money": ">=0.13 <0.14",
         "peso/core": "^1.1"
     },
     "require-dev": {
