@@ -49,13 +49,17 @@ abstract readonly class AbstractRateProvider implements ExchangeRateProvider
             }
             if ($value instanceof Date) {
                 $date = $value;
+                continue;
             }
             if ($value instanceof DateTimeInterface) {
                 $date = Calendar::fromDateTime($value);
+                continue;
             }
             if (\is_string($value)) {
                 $date = Calendar::parse($value);
+                continue;
             }
+            return null; // unable to parse
         }
 
         return $date ?
@@ -73,6 +77,10 @@ abstract readonly class AbstractRateProvider implements ExchangeRateProvider
         array $dimensions = [],
     ): BigNumber|null {
         $request = $this->createRequest($sourceCurrency->getCurrencyCode(), $targetCurrency->getCurrencyCode());
+        if ($request === null) {
+            return null;
+        }
+
         try {
             $response = $this->service->send($request);
         } catch (RuntimeException $e) {

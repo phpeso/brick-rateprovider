@@ -11,9 +11,12 @@ namespace Peso\Brick;
 
 use Arokettu\Date\Date;
 use Override;
-use Peso\Core\Requests\HistoricalExchangeRateRequest;
 use Peso\Core\Services\PesoServiceInterface;
 
+/**
+ * @deprecated PesoRateProvider can do historical requests now
+ * @see PesoRateProvider
+ */
 final readonly class PesoHistoricalRateProvider extends AbstractRateProvider
 {
     public function __construct(
@@ -29,8 +32,12 @@ final readonly class PesoHistoricalRateProvider extends AbstractRateProvider
     }
 
     #[Override]
-    protected function createRequest(string $sourceCurrencyCode, string $targetCurrencyCode): object
-    {
-        return new HistoricalExchangeRateRequest($sourceCurrencyCode, $targetCurrencyCode, $this->date);
+    protected function createRequest(
+        string $sourceCurrencyCode,
+        string $targetCurrencyCode,
+        array $dimensions = [],
+    ): object|null {
+        $dimensions['date'] ??= $this->date; // set date if not set by user
+        return parent::createRequest($sourceCurrencyCode, $targetCurrencyCode, $dimensions);
     }
 }
