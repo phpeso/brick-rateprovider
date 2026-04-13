@@ -36,7 +36,7 @@ abstract readonly class AbstractRateProvider implements ExchangeRateProvider
     protected function createRequest(
         string $sourceCurrencyCode,
         string $targetCurrencyCode,
-        array $dimensions = [],
+        array $dimensions,
     ): object|null {
         $date = false;
 
@@ -76,7 +76,11 @@ abstract readonly class AbstractRateProvider implements ExchangeRateProvider
         Currency $targetCurrency,
         array $dimensions = [],
     ): BigNumber|null {
-        $request = $this->createRequest($sourceCurrency->getCurrencyCode(), $targetCurrency->getCurrencyCode());
+        $request = $this->createRequest(
+            $sourceCurrency->getCurrencyCode(),
+            $targetCurrency->getCurrencyCode(),
+            $dimensions,
+        );
         if ($request === null) {
             return null;
         }

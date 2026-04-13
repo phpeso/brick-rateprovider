@@ -35,7 +35,7 @@ final readonly class PesoHistoricalRateProvider extends AbstractRateProvider
     protected function createRequest(
         string $sourceCurrencyCode,
         string $targetCurrencyCode,
-        array $dimensions = [],
+        array $dimensions,
     ): object|null {
         $dimensions['date'] ??= $this->date; // set date if not set by user
         return parent::createRequest($sourceCurrencyCode, $targetCurrencyCode, $dimensions);
